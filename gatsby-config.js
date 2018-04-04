@@ -54,6 +54,12 @@ module.exports = {
         head: false,
       },
     },
+    {
+      resolve: 'gatsby-plugin-netlify-cms',
+      options: {
+        modulePath: `${__dirname}/src/cms/cms.js`
+      }
+    },
     `gatsby-transformer-remark`,
     'gatsby-plugin-sass',
     'gatsby-plugin-react-helmet',
