@@ -1,0 +1,37 @@
+@import '../sass/colors.sass'
+
+body,
+body > div,
+body > div > div 
+    height: 100vh
+    max-height: 100vh
+
+body
+    background-color: #eee
+
+
+body .main-content 
+    flex-grow: 1
+    display: flex
+    flex-direction: column
+    overflow-y: scroll
+    scroll-behavior: smooth
+
+
+
+a 
+    transition: all 0.15s ease-out
+    text-shadow: none
+    text-decoration: none
+    background-image: none
+    color: $blue
+
+
+*::selection 
+    background: #FF6300
+    color: #fff
+
+
+
+.social-icon__link 
+    color: gray

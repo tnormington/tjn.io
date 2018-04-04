@@ -1,0 +1,33 @@
+body
+    --slide-height: 100vh
+
+.slick-slide 
+    height: var(--slide-height)
+    align-items: center
+    justify-content: center
+    background-color: #444
+
+
+.slick-initialized .slick-slide 
+    display: flex
+
+
+.slick-dots 
+    bottom: 1rem
+    li button:before,
+    li.slick-active button:before
+        color: #fff
+
+
+.slick-arrow 
+    z-index: 10
+    bottom: 1rem
+    top: auto
+
+
+.slick-next 
+    right: 1rem
+
+
+.slick-prev 
+    left: 1rem

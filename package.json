@@ -1,0 +1,40 @@
+{
+  "name": "tjn.io",
+  "description": "My personal website",
+  "version": "1.0.0",
+  "author": "Tim Normington <tim.j.normington@gmail.com>",
+  "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "gatsby": "^1.9.241",
+    "gatsby-link": "^1.6.39",
+    "gatsby-plugin-core-js": "^1.0.2",
+    "gatsby-plugin-manifest": "^1.0.15",
+    "gatsby-plugin-offline": "^1.0.15",
+    "gatsby-plugin-react-helmet": "^2.0.8",
+    "gatsby-plugin-sass": "^1.0.24",
+    "gatsby-plugin-typography": "^1.7.18",
+    "gatsby-source-filesystem": "^1.5.27",
+    "gatsby-transformer-remark": "^1.7.37",
+    "nuka-carousel": "^4.0.1",
+    "react-helmet": "^5.2.0",
+    "react-icons": "^2.2.7",
+    "react-slick": "^0.22.2",
+    "slick-carousel": "^1.8.1",
+    "typography": "^0.16.6",
+    "typography-theme-ocean-beach": "^0.15.11"
+  },
+  "keywords": [
+    "gatsby"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write 'src/**/*.js'",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "surge": "gatsby build && surge ./public/ https://tjn.io"
+  },
+  "devDependencies": {
+    "prettier": "^1.11.1"
+  }
+}

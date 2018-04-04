@@ -1,0 +1,28 @@
+@import '../../sass/colors.sass'
+@import '../../sass/variables.sass'
+
+
+    
+.topbar__menu a 
+    text-transform: uppercase
+    color: #fff
+    font-size: 14px
+    text-decoration: none
+    background-image: none
+    padding: 10px 14px
+    display: inline-block
+
+
+.topbar__menu a.active 
+    color: $yellow
+    border-bottom: 2px solid $yellow
+    padding-bottom: 8px
+
+
+
+.main-menu-toggle
+    display: none
+    
+@media (max-width: $mobile_break)
+    .topbar__wrapper
+        display: none
