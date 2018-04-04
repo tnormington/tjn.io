@@ -9,7 +9,7 @@ module.exports = {
         name: "TJN.io",
         short_name: "TJN.io",
         start_url: "/",
-        background_color: "#eee",
+        background_color: "#2A2A2A",
         theme_color: "#404040",
         display: "standalone",
         icons: [
