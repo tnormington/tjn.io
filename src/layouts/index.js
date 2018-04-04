@@ -7,6 +7,8 @@ import Footer from '../components/Footer/Footer'
 
 import './base.sass'
 
+import { getScrollbarWidth } from '../utils/dom'
+
 
 export default class TemplateWrapper extends Component {
   constructor(props) {
@@ -22,6 +24,12 @@ export default class TemplateWrapper extends Component {
         footer: null,
       }
     };
+  }
+
+  componentDidMount() {
+    // Remove scrollbar by setting negative marginRight
+    const scrollbarWidth = getScrollbarWidth();
+    this.mainContent.style.marginRight = `-${scrollbarWidth}px`;
   }
 
   setHeight(el, h) {
@@ -79,7 +87,7 @@ export default class TemplateWrapper extends Component {
           height={ this.state.height.header }
           setHeight={this.setHeight}
           path={this.props.location.pathname} />
-        <div className="main-content">
+        <div className="main-content" ref={el => this.mainContent = el}>
           {this.props.children()}
         </div>
         <Footer

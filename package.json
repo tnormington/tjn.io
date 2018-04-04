@@ -3,6 +3,7 @@
   "description": "My personal website",
   "version": "1.0.0",
   "author": "Tim Normington <tim.j.normington@gmail.com>",
+  "repository": "https://github.com/tnormington/tjn.io",
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "gatsby": "^1.9.241",
