@@ -60,20 +60,20 @@ module.exports = {
         modulePath: `${__dirname}/src/cms/cms.js`
       }
     },
-    `gatsby-transformer-remark`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `content`,
+        path: `${__dirname}/src/content/`,
+      },
+    },
+    'gatsby-transformer-remark',
     'gatsby-plugin-sass',
     'gatsby-plugin-react-helmet',
     {
       resolve: `gatsby-plugin-typography`,
       options: {
         pathToConfigModule: `src/utils/typography.js`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `content`,
-        path: `${__dirname}/src/content/`,
       },
     },
     'gatsby-plugin-offline',

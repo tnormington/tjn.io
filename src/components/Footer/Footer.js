@@ -34,7 +34,6 @@ export default class Footer extends Component {
             <div
                 className="footer__wrapper"
                 ref={ el => {
-                    console.log('ref callback');
                     if(el != null && this.props.height === null && el.clientHeight > 0)
                         this.props.setHeight('footer', el.clientHeight) 
                 }}>

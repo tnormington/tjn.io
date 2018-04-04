@@ -15,7 +15,7 @@ export default ({data}) => {
     )
 }
 
-export const query = graphql`
+export const blogQuery = graphql`
   query BlogQuery($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html

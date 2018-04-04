@@ -29,7 +29,6 @@ export default class Header extends Component {
   
     return (
       <div className="topbar__wrapper" ref={(el) => {
-        console.log('ref callback');
         if(el != null && this.props.height === null && el.clientHeight > 0)
           this.props.setHeight('header', el.clientHeight);
         }}>

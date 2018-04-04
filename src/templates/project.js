@@ -20,14 +20,13 @@ export default ({data}) => {
     )
 }
 
-export const query = graphql`
+export const projectQuery = graphql`
   query ProjectQuery($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       frontmatter {
         title
         date
-        github_link
       }
     }
   }
