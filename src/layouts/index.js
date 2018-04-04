@@ -69,6 +69,10 @@ export default class TemplateWrapper extends Component {
             { name: 'keywords', content: 'tim normington, web design, web development' },
           ]}>
           <meta name="apple-mobile-web-app-capable" content="yes" />
+          <link
+            rel="icon" 
+            type="image/png" 
+            href="/favicon/logo-16x16.png" />
         </Helmet>
         <Header 
           resetHeight={ this.resetHeight }
