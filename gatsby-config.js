@@ -14,32 +14,32 @@ module.exports = {
         display: "standalone",
         icons: [
           {
-            src: `favicons/android-chrome-540x540.png`,
+            src: `favicon/android-chrome-540x540.png`,
             sizes: `540x540`,
             type: `image/png`,
           },
           {
-            src: `favicons/android-chrome-192x192.png`,
+            src: `favicon/android-chrome-192x192.png`,
             sizes: `192x192`,
             type: `image/png`,
           },
           {
-            src: `favicons/android-chrome-144x144.png`,
+            src: `favicon/android-chrome-144x144.png`,
             sizes: `144x144`,
             type: `image/png`,
           },
           {
-            src: `favicons/android-chrome-96x96.png`,
+            src: `favicon/android-chrome-96x96.png`,
             sizes: `96x96`,
             type: `image/png`,
           },
           {
-            src: `favicons/android-chrome-72x72.png`,
+            src: `favicon/android-chrome-72x72.png`,
             sizes: `72x72`,
             type: `image/png`,
           },
           {
-            src: `favicons/android-chrome-48x48.png`,
+            src: `favicon/android-chrome-48x48.png`,
             sizes: `48x48`,
             type: `image/png`,
           },
