@@ -46,6 +46,14 @@ module.exports = {
         ],
       },
     },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: "UA-93899187-1",
+        // Puts tracking script in the head instead of the body
+        head: false,
+      },
+    },
     `gatsby-transformer-remark`,
     'gatsby-plugin-sass',
     'gatsby-plugin-react-helmet',
