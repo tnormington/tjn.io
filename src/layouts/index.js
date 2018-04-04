@@ -67,8 +67,9 @@ export default class TemplateWrapper extends Component {
           meta={[
             { name: 'description', content: 'A personal portfolio website.' },
             { name: 'keywords', content: 'tim normington, web design, web development' },
-          ]}
-        />
+          ]}>
+          <meta name="apple-mobile-web-app-capable" content="yes" />
+        </Helmet>
         <Header 
           resetHeight={ this.resetHeight }
           height={ this.state.height.header }
