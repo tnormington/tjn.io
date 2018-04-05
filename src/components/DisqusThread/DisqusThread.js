@@ -3,7 +3,10 @@ import React, { Component } from 'react';
 export default class DisqusThread extends Component {
     constructor(props) {
         super(props)
-
+        
+    }
+    
+    componentDidMount() {
         window.disqus_config = {
             page: {
                 url: props.url,
@@ -17,7 +20,6 @@ export default class DisqusThread extends Component {
             s.setAttribute('data-timestamp', +new Date());
             (d.head || d.body).appendChild(s);
         })();
-
     }
 
     render() {

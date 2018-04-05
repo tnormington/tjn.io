@@ -8,9 +8,9 @@ export default ({data}) => {
           <h1>{ title }</h1>
           <time>{ date }</time>
           { github_link && 
-          <div>
-            <a href={github_link} target="_blank">Github</a>
-          </div>
+            <div>
+              <a href={github_link} target="_blank">Github</a>
+            </div>
           }
           <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} />
         </PageContainer>
