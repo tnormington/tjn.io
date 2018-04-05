@@ -20,7 +20,7 @@ export default ({data}) => {
           <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} />
           <DisqusThread 
             url={url}
-            identified={id}
+            identifier={url}
             />
         </PageContainer>
     )
