@@ -1,16 +1,27 @@
 import React from 'react'
 import PageContainer from '../components/PageContainer/PageContainer'
 
-export default ({data}) => {
-    const { title, date, github_link, header_image } = data.markdownRemark.frontmatter;
-    // const headerImagePath = `../../assets/project_header_images/${header_image}`;
+import DisqusThread from '../components/DisqusThread/DisqusThread'
 
-    // const header = require(headerImagePath);
+export default ({data}) => {
+    const {
+      title,
+      date,
+      header_image
+    } = data.markdownRemark.frontmatter;
+
+    const url = data.markdownRemark.fields.slug;
+    const id = data.markdownRemark.id;
+
     return (
         <PageContainer>
           <h1>{ title }</h1>
           <time>{ date }</time>
           <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} />
+          <DisqusThread 
+            url={url}
+            identified={id}
+            />
         </PageContainer>
     )
 }
@@ -19,9 +30,13 @@ export const blogQuery = graphql`
   query BlogQuery($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
+      id
       frontmatter {
         title
         date
+      }
+      fields {
+        slug
       }
     }
   }

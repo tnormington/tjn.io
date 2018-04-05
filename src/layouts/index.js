@@ -96,6 +96,7 @@ export default class TemplateWrapper extends Component {
           height={ this.state.height.footer }
           setHeight={this.setHeight}
           path={this.props.location.pathname} />
+        <script id="dsq-count-scr" src="//tjn-io.disqus.com/count.js" async></script>
       </div>
     )
   }
