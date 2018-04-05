@@ -1,0 +1,45 @@
+@import '../../sass/colors.sass'
+
+.search
+    position: absolute
+    left: 0
+    top: 0
+    height: 0
+    width: 100%
+    background-color: $darkgray
+    z-index: 99
+    transition: all 0.5s ease-out
+    padding-top: 3rem
+    &.active
+        height: 2000px
+    &__inner
+        max-width: 700px
+        padding: 0 10px
+        margin: 0 auto
+        position: relative
+
+
+.search__results
+    margin: 0
+    padding: 0
+    li
+        list-style-type: none
+        padding: 10px
+        background-color: white
+        margin-bottom: 6px
+
+.search__input
+    margin-bottom: 1rem
+    padding-right: 50px
+    
+.search__no-results
+    font-size: 1.5rem
+    color: white
+    text-align: center
+
+.search__clear-query
+    position: absolute
+    right: 14px
+    top: 4px
+    background-color: transparent
+    z-index: 10

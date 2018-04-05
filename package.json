@@ -39,6 +39,7 @@
     "surge": "gatsby build && surge ./public/ https://tjn.io"
   },
   "devDependencies": {
+    "@andrew-codes/gatsby-plugin-elasticlunr-search": "^1.0.4",
     "prettier": "^1.11.1"
   }
 }

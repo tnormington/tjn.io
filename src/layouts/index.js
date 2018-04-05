@@ -5,6 +5,7 @@ import Helmet from 'react-helmet'
 
 import Header from '../components/Header/Header'
 import Footer from '../components/Footer/Footer'
+import Search from '../components/Search/Search'
 
 import './base.sass'
 
@@ -18,12 +19,14 @@ export default class TemplateWrapper extends Component {
     this.setHeight = this.setHeight.bind(this);
     this.setHeightVariable = this.setHeightVariable.bind(this);
     this.resetHeight = this.resetHeight.bind(this);
+    this.toggleSearch = this.toggleSearch.bind(this);
 
     this.state = {
       height: {
         header: null,
         footer: null,
-      }
+      },
+      showSearch: false,
     };
   }
 
@@ -64,6 +67,13 @@ export default class TemplateWrapper extends Component {
     document.body.style.setProperty('--slide-height', slideHeight)
   }
 
+  toggleSearch() {
+    this.setState(prevState => {
+      prevState.showSearch = !prevState.showSearch;
+      return prevState;
+    })
+  }
+
   render() {
     return (
       <div
@@ -83,10 +93,14 @@ export default class TemplateWrapper extends Component {
             type="image/png" 
             href="/favicon/logo-16x16.png" />
         </Helmet>
+        { this.props.data.siteSearchIndex && this.state.showSearch &&
+          <Search index={this.props.data.siteSearchIndex.index} />
+        }
         <Header 
           resetHeight={ this.resetHeight }
           height={ this.state.height.header }
           setHeight={this.setHeight}
+          toggleSearch={this.toggleSearch}
           path={this.props.location.pathname} />
         <div className="main-content" ref={el => this.mainContent = el}>
           {this.props.children()}
@@ -105,4 +119,12 @@ export default class TemplateWrapper extends Component {
 TemplateWrapper.propTypes = {
   children: PropTypes.func,
 }
+
+// Graphql query used to retrieve the serialized search index.
+export const query = graphql`
+  query siteSearchIndexQuery {
+    siteSearchIndex {
+      index
+    }
+  }`;
 

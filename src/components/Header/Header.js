@@ -6,6 +6,7 @@ import './Header.sass'
 
 import Logo from '../Logo/Logo'
 import MainMenu from '../MainMenu/MainMenu';
+import SearchToggle from '../SearchToggle/SearchToggle';
 
 
 export default class Header extends Component {
@@ -40,6 +41,9 @@ export default class Header extends Component {
               </Link>
             </div>
             <MainMenu path={this.props.path} />
+            <div className="header__search-toggle">
+              <SearchToggle onClick={this.props.toggleSearch} />
+            </div>
           </div>
         </Container>
       </div>
