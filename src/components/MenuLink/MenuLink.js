@@ -13,8 +13,13 @@ export default (props) => {
     if(check) className = 'active';
 
     return (
-        <Link to={props.to} className={className}>
-            {props.title}
-        </Link>
+        <div
+            onClick={props.onClick}
+            className={className}>
+            <Link
+                to={props.to}>
+                {props.title}
+            </Link>
+        </div>
     )
 }

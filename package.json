@@ -8,6 +8,7 @@
     "babel-polyfill": "^6.26.0",
     "gatsby": "^1.9.246",
     "gatsby-link": "^1.6.40",
+    "gatsby-plugin-catch-links": "^1.0.19",
     "gatsby-plugin-core-js": "^1.0.2",
     "gatsby-plugin-google-analytics": "^1.0.28",
     "gatsby-plugin-manifest": "^1.0.15",

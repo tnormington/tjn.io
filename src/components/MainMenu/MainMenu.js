@@ -27,7 +27,13 @@ export default class MainMenu extends Component {
   render() {
     const { path } = this.props;
     const menuLinks = links.map( link => (
-      <MenuLink key={link.title} title={link.title} to={link.to} path={path} />
+      <MenuLink
+        onClick={this.props.onClick}
+        addLinkToState={this.props.addLinkToState}
+        key={link.title}
+        title={link.title}
+        to={link.to}
+        path={path} />
     ));
 
     return (

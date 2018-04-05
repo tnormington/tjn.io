@@ -3,20 +3,23 @@
 
 
     
-.topbar__menu a 
+.topbar__menu > *
     text-transform: uppercase
-    color: #fff
     font-size: 14px
     text-decoration: none
     background-image: none
     padding: 10px 14px
     display: inline-block
+    a
+        color: #fff
 
 
-.topbar__menu a.active 
-    color: $yellow
+
+.topbar__menu > *.active 
     border-bottom: 2px solid $yellow
     padding-bottom: 8px
+    a
+        color: $yellow
 
 
 

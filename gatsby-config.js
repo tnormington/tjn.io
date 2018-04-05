@@ -3,24 +3,7 @@ module.exports = {
     title: 'TJN.io',
   },
   plugins: [
-    {
-      resolve: `@andrew-codes/gatsby-plugin-elasticlunr-search`,
-      options: {
-        // Fields to index
-        fields: [
-            'title',
-            'keywords',
-        ],
-        // How to resolve each field's value for a supported node type
-        resolvers: {
-          // For any node of type MarkdownRemark, list how to resolve the fields' values
-          MarkdownRemark: {
-            title: node => node.frontmatter.title,
-            keywords: node => node.frontmatter.keywords,
-          },
-        },
-      },
-    },
+    'gatsby-transformer-remark',
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -85,9 +68,34 @@ module.exports = {
         path: `${__dirname}/src/content/`,
       },
     },
-    'gatsby-transformer-remark',
+    {
+      resolve: `@andrew-codes/gatsby-plugin-elasticlunr-search`,
+      options: {
+        // Fields to index
+        fields: [
+            'title',
+            'keywords',
+            'slug',
+            'excerpt'
+        ],
+        // How to resolve each field's value for a supported node type
+        resolvers: {
+          // For any node of type MarkdownRemark, list how to resolve the fields' values
+          MarkdownRemark: {
+            title: node => node.frontmatter.title,
+            keywords: node => node.frontmatter.keywords,
+            slug: node => node.fields.slug,
+            excerpt: node => {
+              console.log(node);
+              // node.excerpt
+            }
+          },
+        },
+      },
+    },
     'gatsby-plugin-sass',
     'gatsby-plugin-react-helmet',
+    'gatsby-plugin-catch-links',
     {
       resolve: `gatsby-plugin-typography`,
       options: {

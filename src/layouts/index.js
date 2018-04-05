@@ -20,6 +20,7 @@ export default class TemplateWrapper extends Component {
     this.setHeightVariable = this.setHeightVariable.bind(this);
     this.resetHeight = this.resetHeight.bind(this);
     this.toggleSearch = this.toggleSearch.bind(this);
+    this.closeSearch = this.closeSearch.bind(this);
 
     this.state = {
       height: {
@@ -74,6 +75,12 @@ export default class TemplateWrapper extends Component {
     })
   }
 
+  closeSearch() {
+    this.setState({
+      showSearch: false
+    });
+  }
+
   render() {
     return (
       <div
@@ -94,14 +101,18 @@ export default class TemplateWrapper extends Component {
             href="/favicon/logo-16x16.png" />
         </Helmet>
         { this.props.data.siteSearchIndex && this.state.showSearch &&
-          <Search index={this.props.data.siteSearchIndex.index} />
-        }
+          <Search 
+            closeSearch={this.closeSearch}
+            index={this.props.data.siteSearchIndex.index} />
+          }
         <Header 
           resetHeight={ this.resetHeight }
           height={ this.state.height.header }
           setHeight={this.setHeight}
           toggleSearch={this.toggleSearch}
-          path={this.props.location.pathname} />
+          path={this.props.location.pathname}
+          closeSearch={this.closeSearch}
+          showSearch={this.state.showSearch} />
         <div className="main-content" ref={el => this.mainContent = el}>
           {this.props.children()}
         </div>

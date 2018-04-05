@@ -12,6 +12,12 @@ import SearchToggle from '../SearchToggle/SearchToggle';
 export default class Header extends Component {
   constructor(props) {
     super(props);
+
+    this.addLinkToState = this.addLinkToState.bind(this);
+
+    this.state = {
+      links: []
+    };
   }
 
   componentDidMount() {
@@ -25,6 +31,13 @@ export default class Header extends Component {
     window.removeEventListener('resize', this.resizeListener );
   }
 
+  addLinkToState(link) {
+    this.setState( prevState => {
+      prevState.links.push(link);
+      return prevState;
+    });
+  }
+
   render() {
     const isHome = this.props.path == '/';
   
@@ -35,14 +48,23 @@ export default class Header extends Component {
         }}>
         <Container>
           <div className="topbar">
-            <div className="topbar__logo">
-              <Link to="/">
+            <div
+              onClick={this.props.closeSearch}
+              className="topbar__logo">
+              <Link 
+                innerRef={(el) => this.addLinkToState(el) }
+                to="/">
                 <Logo classNames={isHome ? 'active--yellow' : ''} />
               </Link>
             </div>
-            <MainMenu path={this.props.path} />
+            <MainMenu
+              onClick={this.props.closeSearch}
+              addLinkToState={this.addLinkToState}
+              path={this.props.path} />
             <div className="header__search-toggle">
-              <SearchToggle onClick={this.props.toggleSearch} />
+              <SearchToggle 
+                showSearch={this.props.showSearch}
+                onClick={this.props.toggleSearch} />
             </div>
           </div>
         </Container>

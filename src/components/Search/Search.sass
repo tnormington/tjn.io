@@ -6,7 +6,7 @@
     top: 0
     height: 0
     width: 100%
-    background-color: $darkgray
+    background-color: rgba($darkgray, 0.85)
     z-index: 99
     transition: all 0.5s ease-out
     padding-top: 3rem
@@ -22,11 +22,11 @@
 .search__results
     margin: 0
     padding: 0
-    li
-        list-style-type: none
-        padding: 10px
-        background-color: white
-        margin-bottom: 6px
+    // li
+    //     list-style-type: none
+    //     padding: 10px
+    //     background-color: white
+    //     margin-bottom: 6px
 
 .search__input
     margin-bottom: 1rem
@@ -43,3 +43,7 @@
     top: 4px
     background-color: transparent
     z-index: 10
+    opacity: 0
+    transition: all 0.25s ease-out
+    &.active
+        opacity: 1

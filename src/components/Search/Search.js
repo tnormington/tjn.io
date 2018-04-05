@@ -1,15 +1,20 @@
 import React, {Component} from 'react';
 import {Index} from 'elasticlunr';
 
+import Link from 'gatsby-link';
+
 import ClearIcon from 'react-icons/lib/fa/close';
 
 import './Search.sass'
+import SearchResult from './SearchResult/SearchResult';
 
 export default class Search extends Component {
     constructor(props) {
         super(props);
 
         this.clearQuery = this.clearQuery.bind(this)
+        this.handleKeyUp = this.handleKeyUp.bind(this)
+        this.closeSearch = this.props.closeSearch.bind(this)
 
         this.state = {
             query: ``,
@@ -19,7 +24,24 @@ export default class Search extends Component {
     }
 
     componentDidMount() {
-        this.setState({ mounted: true });
+        // My work-around for adding a transition
+        window.setTimeout(() => {
+            this.setState({ mounted: true });
+        }, 10)
+
+        // Add keyup listener to window to close search box on esc keypress
+        window.addEventListener('keyup', this.handleKeyUp);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('keyup', this.handleKeyUp);
+    }
+
+    handleKeyUp(e) {
+        // make sure its the escape key only
+        if(e.keyCode === 27) {
+            this.closeSearch()
+        }
     }
 
     clearQuery() {
@@ -31,6 +53,8 @@ export default class Search extends Component {
 
     render() {
         const classNames = this.state.mounted ? 'search active' : 'search';
+        // Use this to determine the clear class
+        const clearBtnClass = this.state.query != '' ? 'active' : '';
 
         return (
             <div className={ classNames }>
@@ -42,15 +66,16 @@ export default class Search extends Component {
                         value={this.state.query}
                         onChange={this.search}/>
                     <button
-                        className="search__clear-query"
+                        className={`search__clear-query ${clearBtnClass}`}
                         onClick={this.clearQuery}>
                         <ClearIcon />
                     </button>
                     <ul className="search__results">
                         {this.state.results.map(page => (
-                            <li key={page.title}>
-                                {page.title}: {page.keywords.join(`,`)}
-                            </li>
+                            <SearchResult
+                                key={page.id}
+                                onClick={this.closeSearch}
+                                page={page} />
                         ))}
                         { this.state.results.length <= 0 && this.state.query != '' &&
                             <div className="search__no-results">
@@ -71,7 +96,6 @@ export default class Search extends Component {
     search = (evt) => {
         const query = evt.target.value;
         this.index = this.getOrCreateIndex();
-        console.log(this.index);
         this.setState({
             query,
             // Query the index with search string to get an [] of IDs
