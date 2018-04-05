@@ -9,8 +9,8 @@ export default class DisqusThread extends Component {
     componentDidMount() {
         window.disqus_config = {
             page: {
-                url: props.url,
-                identifier: props.identified
+                url: this.props.url,
+                identifier: this.props.identified
             }
         };
 
