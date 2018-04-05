@@ -2,6 +2,7 @@
 layout: blog
 title: Complete Website Overhaul
 date: '2018-04-01T14:30:09-06:00'
+thumbnail: /uploads/tjn.io_admin_workflow.png
 keywords:
   - Gatsby
   - Github
