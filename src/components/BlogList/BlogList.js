@@ -2,6 +2,7 @@ import React from 'react'
 import Card from '../Card/Card'
 
 import Link from 'gatsby-link'
+import Teaser from '../Teaser/Teaser';
 
 export default (props) => {
     return (
@@ -12,17 +13,18 @@ export default (props) => {
                     date,
                     keywords
                 } = blog.node.frontmatter;
-                const { id } = blog.node;
+                const { id, excerpt } = blog.node;
                 const { slug } = blog.node.fields;
                 
                 return (
-                    <Link to={slug} key={id}>
-                        <Card>
-                            <div className="blog-teaser__title">
-                                { title }
-                            </div>
-                        </Card>
-                    </Link>
+                    <Teaser 
+                        key={id}
+                        slug={slug}
+                        title={title}
+                        date={date}
+                        keywords={keywords}
+                        excerpt={excerpt}
+                        />
                 )
             })}
         </div>

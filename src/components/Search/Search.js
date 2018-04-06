@@ -17,6 +17,7 @@ export default class Search extends Component {
         this.closeSearch = this.props.closeSearch.bind(this)
 
         this.state = {
+            input: null,
             query: ``,
             results: [],
             mounted: false,
@@ -31,6 +32,8 @@ export default class Search extends Component {
 
         // Add keyup listener to window to close search box on esc keypress
         window.addEventListener('keyup', this.handleKeyUp);
+        // Focus search input
+        this.input.focus();
     }
 
     componentWillUnmount() {
@@ -60,6 +63,7 @@ export default class Search extends Component {
             <div className={ classNames }>
                 <div className="search__inner">
                     <input
+                        ref={ el => this.input = el }
                         className="search__input"
                         placeholder="Search..."
                         type="text"

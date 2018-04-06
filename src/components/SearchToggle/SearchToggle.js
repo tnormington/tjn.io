@@ -6,7 +6,7 @@ import './SearchToggle.sass'
 
 export default ({onClick, showSearch}) => (
     <button
-        className="search-toggle"
+        className={`search-toggle ${showSearch ? 'active' : ''}`}
         onClick={onClick}
         value="Search">
         { showSearch &&

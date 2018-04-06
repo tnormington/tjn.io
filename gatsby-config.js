@@ -85,10 +85,7 @@ module.exports = {
             title: node => node.frontmatter.title,
             keywords: node => node.frontmatter.keywords,
             slug: node => node.fields.slug,
-            excerpt: node => {
-              console.log(node);
-              // node.excerpt
-            }
+            excerpt: node => node.excerpt
           },
         },
       },

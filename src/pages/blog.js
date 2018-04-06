@@ -8,7 +8,7 @@ export default ({ data }) => {
     console.log(data);
     return (
         <PageContainer>
-            <h1>Blog Posts</h1>
+            <h1>Blog</h1>
             { data &&
                 <BlogList blogs={data.allMarkdownRemark.edges} />
             }
@@ -31,7 +31,7 @@ export const allBlogsQuery = graphql`
                     frontmatter {
                         title
                         date
-
+                        keywords
                     }
                     excerpt
                     fields {

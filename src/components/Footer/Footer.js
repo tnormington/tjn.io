@@ -40,7 +40,11 @@ export default class Footer extends Component {
                 <Container>
                     <CopyrightBar />
                 </Container>
-                <MobileMenu path={this.props.path} />
+                <MobileMenu 
+                    toggleSearch={this.props.toggleSearch}
+                    closeSearch={this.props.closeSearch}
+                    showSearch={this.props.showSearch}
+                    path={this.props.path} />
             </div>
         )
     }

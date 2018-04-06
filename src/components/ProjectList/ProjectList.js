@@ -1,13 +1,12 @@
 import React from 'react'
-import ProjectTeaser from './ProjectTeaser/ProjectTeaser'
+import Teaser from '../Teaser/Teaser'
 
 export default ({projects}) => {
-    console.log(projects);
     return (
         <div>
             <h3>Project List</h3>
             { projects.map( project => (
-                <ProjectTeaser
+                <Teaser
                     key={project.node.id}
                     title={project.node.frontmatter.title}
                     date={project.node.frontmatter.date}

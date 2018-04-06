@@ -109,10 +109,11 @@ export default class TemplateWrapper extends Component {
           resetHeight={ this.resetHeight }
           height={ this.state.height.header }
           setHeight={this.setHeight}
-          toggleSearch={this.toggleSearch}
           path={this.props.location.pathname}
+          toggleSearch={this.toggleSearch}
           closeSearch={this.closeSearch}
-          showSearch={this.state.showSearch} />
+          showSearch={this.state.showSearch}
+          />
         <div className="main-content" ref={el => this.mainContent = el}>
           {this.props.children()}
         </div>
@@ -120,7 +121,11 @@ export default class TemplateWrapper extends Component {
           resetHeight={ this.resetHeight }
           height={ this.state.height.footer }
           setHeight={this.setHeight}
-          path={this.props.location.pathname} />
+          path={this.props.location.pathname}
+          toggleSearch={this.toggleSearch}
+          closeSearch={this.closeSearch}
+          showSearch={this.state.showSearch}
+          />
         <script id="dsq-count-scr" src="//tjn-io.disqus.com/count.js" async></script>
       </div>
     )

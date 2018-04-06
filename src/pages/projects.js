@@ -37,6 +37,7 @@ export const allProjectsQuery = graphql`
                     frontmatter {
                         title
                         date
+                        keywords
                     }
                     excerpt
                     fields {

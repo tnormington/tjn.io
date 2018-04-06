@@ -8,6 +8,7 @@ import SocialIcons from '../SocialIcons/SocialIcons'
 import { links } from '../../models/main_menu'
 
 import './MobileMenu.sass'
+import SearchToggle from '../SearchToggle/SearchToggle';
 
 export default class MobileMenu extends Component {
     constructor(props) {
@@ -32,7 +33,13 @@ export default class MobileMenu extends Component {
                         <Logo
                             classNames={this.props.path == '/' ? 'active--yellow' : ''} />
                     </Link>
-                    <SocialIcons />
+                    <div className="mobile-menu__top__menu">
+                        <SocialIcons />
+                        <SearchToggle 
+                            onClick={this.props.toggleSearch}
+                            showSearch={this.props.showSearch}
+                            />
+                    </div>
                 </div>
                 
                 <div className="mobile-menu">
