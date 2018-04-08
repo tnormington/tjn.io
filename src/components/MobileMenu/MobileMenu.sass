@@ -22,7 +22,7 @@
     justify-content: stretch
     > div
         flex: 1 0 0
-        &.active a
+        > div.active a
             color: $yellow
             border-bottom: 4px solid $yellow
             padding-bottom: 8px
@@ -35,6 +35,8 @@
         padding: 12px 8px
         display: block
         border-bottom: 0px solid $yellow
+        &:hover
+            color: #fff
 
 @media (max-width: $mobile_break)
     .mobile-menu__outer

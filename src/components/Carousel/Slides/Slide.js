@@ -13,7 +13,10 @@ export default (props) => {
                 <h1>{props.title}</h1>
                 <p>{props.content}</p>
                 { props.to &&
-                    <Cta to={props.to} title="Check it out" />
+                    <Cta 
+                        color='cobalt'
+                        to={props.to}
+                        title="Check it out" />
                 }
             </div>
         </div>

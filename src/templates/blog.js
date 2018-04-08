@@ -1,7 +1,7 @@
 import React from 'react'
 import PageContainer from '../components/PageContainer/PageContainer'
-
 import DisqusThread from '../components/DisqusThread/DisqusThread'
+import Date from '../components/Date/Date'
 
 export default ({data}) => {
     const {
@@ -14,15 +14,19 @@ export default ({data}) => {
     const id = data.markdownRemark.id;
 
     return (
+      <div
+        itemScope
+        itemType="http://schema.org/BlogPosting">
         <PageContainer>
           <h1>{ title }</h1>
-          <time>{ date }</time>
+          <Date date={date} />
           <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} />
           <DisqusThread 
             url={url}
             identifier={url}
             />
         </PageContainer>
+      </div>
     )
 }
 

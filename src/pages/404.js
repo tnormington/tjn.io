@@ -1,10 +1,17 @@
 import React from 'react'
 
-const NotFoundPage = () => (
-  <div>
-    <h1>NOT FOUND</h1>
-    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-  </div>
+import PageContainer from '../components/PageContainer/PageContainer'
+
+const NotFoundPage = ({toggleSearch}) => (
+  <PageContainer>
+    <h1>Not Found</h1>
+    <p>This page doesn't exist, try <a onClick={e => {
+          e.preventDefault();
+          toggleSearch()
+        }}>
+        searching
+      </a>.</p>
+  </PageContainer>
 )
 
 export default NotFoundPage

@@ -82,6 +82,8 @@ export default class TemplateWrapper extends Component {
   }
 
   render() {
+    const toggleSearch = this.toggleSearch;
+
     return (
       <div
         style={{
@@ -95,10 +97,6 @@ export default class TemplateWrapper extends Component {
             { name: 'keywords', content: 'tim normington, web design, web development' },
           ]}>
           <meta name="apple-mobile-web-app-capable" content="yes" />
-          <link
-            rel="icon" 
-            type="image/png" 
-            href="/favicon/logo-16x16.png" />
         </Helmet>
         { this.props.data.siteSearchIndex && this.state.showSearch &&
           <Search 
@@ -115,7 +113,7 @@ export default class TemplateWrapper extends Component {
           showSearch={this.state.showSearch}
           />
         <div className="main-content" ref={el => this.mainContent = el}>
-          {this.props.children()}
+          {this.props.children( {...this.props, toggleSearch } ) }
         </div>
         <Footer
           resetHeight={ this.resetHeight }

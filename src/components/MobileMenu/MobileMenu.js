@@ -17,22 +17,28 @@ export default class MobileMenu extends Component {
 
     render() {
         const menuLinks = links.map( link => (
-            <MenuLink
+            <div 
                 key={link.title}
-                title={link.title}
-                to={link.to}
-                path={this.props.path} />
+                onClick={this.props.closeSearch}>
+                <MenuLink
+                    title={link.title}
+                    to={link.to}
+                    path={this.props.path} />
+            </div>
         ));
 
         return (
             <div className="mobile-menu__outer">
                 <div className="mobile-menu__top">
-                    <Link 
-                        to="/"
-                        className="mobile-menu__top__logo">
-                        <Logo
-                            classNames={this.props.path == '/' ? 'active--yellow' : ''} />
-                    </Link>
+                    <div
+                        onClick={this.props.closeSearch}>
+                        <Link
+                            to="/"
+                            className="mobile-menu__top__logo">
+                            <Logo
+                                classNames={this.props.path == '/' ? 'active--yellow' : ''} />
+                        </Link>
+                    </div>
                     <div className="mobile-menu__top__menu">
                         <SocialIcons />
                         <SearchToggle 

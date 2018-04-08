@@ -29,7 +29,6 @@ export default class MainMenu extends Component {
     const menuLinks = links.map( link => (
       <MenuLink
         onClick={this.props.onClick}
-        addLinkToState={this.props.addLinkToState}
         key={link.title}
         title={link.title}
         to={link.to}
@@ -37,12 +36,10 @@ export default class MainMenu extends Component {
     ));
 
     return (
-        <div>
-          <div 
-            className="topbar__menu">
-            { menuLinks }
-          </div>
-        </div>
+      <div 
+        className="topbar__menu">
+        { menuLinks }
+      </div>
     )
   }
 }

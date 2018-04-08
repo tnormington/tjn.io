@@ -1,3 +1,4 @@
+@import '../../sass/variables.sass'
 @import '../../sass/colors.sass'
 
 .search
@@ -12,23 +13,23 @@
     z-index: 99
     transition: all 0.5s ease-out
     padding-top: 6rem
+    display: block
     &.active
-        height: 2000px
+        height: 100vh
     &__inner
         max-width: 700px
         padding: 0 10px
-        margin: 0 auto
+        margin: 0 auto 100px
         position: relative
 
 
 .search__results
+    overflow-y: scroll
+    max-height: calc(100vh - 206px)
     margin: 0
     padding: 0
-    // li
-    //     list-style-type: none
-    //     padding: 10px
-    //     background-color: white
-    //     margin-bottom: 6px
+    @media (max-width: $mobile_break)
+        max-height: calc(100vh - 256px)
 
 .search__input
     margin-bottom: 1rem

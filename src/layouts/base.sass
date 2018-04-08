@@ -1,6 +1,9 @@
 @import '../sass/colors.sass'
 @import './inputs.sass'
 
+*
+    box-sizing: border-box
+
 html
     overflow: hidden
 
@@ -29,7 +32,10 @@ a
     text-shadow: none
     text-decoration: none
     background-image: none
-    color: $blue
+    color: $cobalt
+    cursor: pointer
+    &:hover
+        color: $lightcobalt
 
 
 *::selection 
@@ -38,5 +44,10 @@ a
 
 
 
-.social-icon__link 
+.social-icon__link
     color: gray
+
+button
+    &:focus
+        outline-color: -webkit-focus-ring-color
+        outline-style: auto
