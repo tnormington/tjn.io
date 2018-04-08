@@ -6,7 +6,6 @@ keywords:
   - CSS
   - Animation
 ---
-
 I first got my hands dirty with programming back in freshman year of college. Back then my major was Interactive Development and Design before I switched over to 3D Digital Graphics, ironically I now do more development work than 3d design, but I am trying to balance that out. Anyway, we were learning how to write actionscript in some Adobe flash editor and it confused me, lots. The assignment was to create a 2 - 3 minute animation for a music video or speech.
 
 I chose to use [Pale Blue Dot](https://www.youtube.com/watch?v=GO5FwsblpT8) by Carl Sagan, I wanted the result to be profound and life-altering, this was my first assignment as a freshman in college after-all.
@@ -17,7 +16,7 @@ I wish I could find the original final result, it's got to be somewhere on a har
 
 But anyway, the other day I was having some internet trouble and couldn't connect to slack. If you haven't experienced this before, slack has a standard screen informing you that you don't have internet connection, this is accompanied by a nice spinning globe gif. Here is a motionless screenshot:
 
-ADD SCREENSHOT HERE
+![Slack globe screenshot](/uploads/screen-shot-2018-04-07-at-6.33.22-pm.png)
 
 Now, I don't know how they created this animation, it could be another method entirely. Either way, it reminded me of that project I did almost 10 years ago and got me thinking to how easily/quickly I could build it today. So I whipped up a codepen in a couple minutes had the result, I used the same circle masking method with a CSS keyframe animation. Check it out.
 
