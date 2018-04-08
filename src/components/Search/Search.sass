@@ -5,7 +5,7 @@
     position: absolute
     left: 0
     top: 0
-    height: 0
+    height: 100vh
     width: 100%
     background-image: linear-gradient(to bottom, rgba(black, 0.95) 0%, rgba(black, 0.35) 70%, rgba(black, 0.1) 100%)
     background-attachment: fixed
@@ -14,22 +14,13 @@
     transition: all 0.5s ease-out
     padding-top: 6rem
     display: block
-    &.active
-        height: 100vh
+    // &.active
+    //     height: 100vh
     &__inner
         max-width: 700px
         padding: 0 10px
         margin: 0 auto 100px
         position: relative
-
-
-.search__results
-    overflow-y: scroll
-    max-height: calc(100vh - 206px)
-    margin: 0
-    padding: 0
-    @media (max-width: $mobile_break)
-        max-height: calc(100vh - 256px)
 
 .search__input
     margin-bottom: 1rem

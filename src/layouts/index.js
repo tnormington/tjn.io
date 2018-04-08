@@ -102,7 +102,7 @@ export default class TemplateWrapper extends Component {
           <Search 
             closeSearch={this.closeSearch}
             index={this.props.data.siteSearchIndex.index} />
-          }
+        }
         <Header 
           resetHeight={ this.resetHeight }
           height={ this.state.height.header }

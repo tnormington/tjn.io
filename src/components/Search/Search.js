@@ -6,8 +6,9 @@ import Link from 'gatsby-link';
 import ClearIcon from 'react-icons/lib/fa/close';
 
 import './Search.sass'
-import SearchResult from './SearchResult/SearchResult';
-import { CSSTransition } from 'react-transition-group';
+import SearchResults from './SearchResults/SearchResults';
+
+// import { Motion, StaggeredMotion } from 'react-motion'
 
 export default class Search extends Component {
     constructor(props) {
@@ -27,9 +28,9 @@ export default class Search extends Component {
 
     componentDidMount() {
         // My work-around for adding a transition
-        window.setTimeout(() => {
-            this.setState({ mounted: true });
-        }, 10)
+        // window.setTimeout(() => {
+        //     this.setState({ mounted: true });
+        // }, 10)
 
         // Add keyup listener to window to close search box on esc keypress
         window.addEventListener('keyup', this.handleKeyUp);
@@ -61,43 +62,29 @@ export default class Search extends Component {
         const clearBtnClass = this.state.query != '' ? 'active' : '';
 
         return (
-            <CSSTransition
-                
-                >
-                <div 
-                    onClick={ e => {
-                        if(e.target.classList.contains('search')) this.closeSearch();
-                    } }
-                    className={ classNames }>
-                    <div className="search__inner">
-                        <input
-                            ref={ el => this.input = el }
-                            className="search__input"
-                            placeholder="Search..."
-                            type="text"
-                            value={this.state.query}
-                            onChange={this.search}/>
-                        <button
-                            className={`search__clear-query ${clearBtnClass}`}
-                            onClick={this.clearQuery}>
-                            <ClearIcon />
-                        </button>
-                        <div className="search__results">
-                            {this.state.results.map(page => (
-                                <SearchResult
-                                    key={page.id}
-                                    onClick={this.closeSearch}
-                                    page={page} />
-                            ))}
-                            { this.state.results.length <= 0 && this.state.query != '' &&
-                                <div className="search__no-results">
-                                    I didn't find anything with those search terms, try something else.
-                                </div>
-                            }
-                        </div>
-                    </div>
+            <div 
+                onClick={ e => {
+                    if(e.target.classList.contains('search')) this.closeSearch();
+                } }
+                className={ classNames }>
+                <div className="search__inner">
+                    <input
+                        ref={ el => this.input = el }
+                        className="search__input"
+                        placeholder="Search..."
+                        type="text"
+                        value={this.state.query}
+                        onChange={this.search}/>
+                    <button
+                        className={`search__clear-query ${clearBtnClass}`}
+                        onClick={this.clearQuery}>
+                        <ClearIcon />
+                    </button>
+                    <SearchResults 
+                        query={this.state.query}
+                        results={this.state.results} />
                 </div>
-            </CSSTransition>
+            </div>
         );
     }
 
@@ -116,9 +103,7 @@ export default class Search extends Component {
                     expand: true
                 })
                 // Map over each ID and return the full document
-                .map(({
-                ref,
-                }) => this.index.documentStore.getDoc(ref)),
+                .map(({ ref }) => this.index.documentStore.getDoc(ref)),
         });
     }
 }

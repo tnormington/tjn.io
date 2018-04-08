@@ -26,6 +26,7 @@
     "react-day-picker": "^7.1.4",
     "react-helmet": "^5.2.0",
     "react-icons": "^2.2.7",
+    "react-motion": "^0.5.2",
     "react-select": "^1.2.1",
     "react-slick": "^0.22.3",
     "react-transition-group": "^2.3.0",
