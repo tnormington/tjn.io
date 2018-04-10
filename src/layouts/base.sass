@@ -1,3 +1,4 @@
+@import '../sass/variables.sass'
 @import '../sass/colors.sass'
 @import './inputs.sass'
 
@@ -39,8 +40,8 @@ a
 
 
 *::selection 
-    background: #FF6300
-    color: #fff
+    background: $brightyellow
+    color: #000
 
 
 
@@ -51,3 +52,8 @@ button
     &:focus
         outline-color: -webkit-focus-ring-color
         outline-style: auto
+
+
+@media (max-width: $mobile_break)
+    h1
+        font-size: 1.75rem

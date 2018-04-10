@@ -15,6 +15,7 @@ export default (props) => {
     return (
         <div
             onClick={props.onClick}
+            ref={props.menuLinkRef}
             className={className}>
             <Link
                 to={props.to}>
