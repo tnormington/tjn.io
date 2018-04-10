@@ -1,0 +1,63 @@
+@import '../../sass/variables.sass'
+@import '../../sass/colors.sass'
+
+// .page-header
+//     @media (max-width: $mobile_break)
+//         position: fixed
+//         width: 100%
+//         left: 0
+//         top: 0
+
+.page-header__top__wrapper,
+.page-header__bottom__wrapper
+    box-shadow: 0 3px 8px rgba(black, 0.4)
+    position: relative
+
+
+.page-header__top__wrapper
+    background-color: $black
+    z-index: 2
+
+.page-header__bottom__wrapper
+    background-color: $medgray
+    z-index: 1
+
+
+.page-header__top__inner
+    display: flex
+    align-items: center
+    justify-content: space-between
+    padding: 1rem 0
+    h1
+        color: #fff
+        margin: 0
+    @media (max-width: 500px)
+        flex-wrap: wrap
+        > *
+            flex: 1 0 100%
+        .page-header__top__main
+            margin-bottom: 10px
+
+
+.page-header__top__util
+    display: flex
+    align-items: center
+    flex: 0 0 auto
+    margin-left: 10px
+    @media (max-width: 500px)
+        margin-left: 0
+        flex-direction: row-reverse
+
+.page-header__ttr
+    border-radius: 5px
+    background-color: $offwhite
+    font-size: 10px
+    display: inline-block
+    padding: 6px 10px
+    margin-left: 1rem
+    @media (max-width: 500px)
+        margin-left: 0
+        margin-right: 1rem
+
+.page-header__share-button
+    color: $lightgray
