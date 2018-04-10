@@ -4,9 +4,9 @@ import { formatDate } from '../../utils/date'
 
 import './Date.sass'
 
-export default ({date}) => (
-    <time 
-        className="date"
+export default ({date, theme}) => (
+    <time
+        className={`date ${theme}`}
         dateTime={date}>
         <span 
             itemProp="dateCreated"
