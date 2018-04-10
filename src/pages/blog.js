@@ -24,6 +24,10 @@ export const allBlogsQuery = graphql`
                     regex: "\/blog/"
                 }
             }
+            sort: { 
+                fields: [frontmatter___date],
+                order: DESC 
+            }
         ) {
             edges {
                 node {
