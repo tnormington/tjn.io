@@ -4,6 +4,7 @@ module.exports = {
   },
   plugins: [
     'gatsby-transformer-remark',
+    'gatsby-plugin-react-next',
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
