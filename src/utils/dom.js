@@ -22,3 +22,10 @@ export function getScrollbarWidth() {
 
     return widthNoScroll - widthWithScroll;
 }
+
+
+export function ttr(text) {
+    const readingTime = require('reading-time')
+
+    return readingTime(text);
+}
