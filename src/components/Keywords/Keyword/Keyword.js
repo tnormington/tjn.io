@@ -1,8 +1,10 @@
 import React from 'react';
 import './Keyword.sass'
 
-export default ({ keyword }) => (
-    <li className="keyword">
+import { classify } from '../../../utils/string'
+
+export default ({ keyword, theme }) => (
+    <li className={`keyword ${theme} ${classify(keyword)}`}>
         { keyword }
     </li>
 )

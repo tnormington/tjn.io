@@ -1,3 +1,7 @@
+@mixin key($color)
+    color: $color
+    border-color: $color
+
 .keyword
     list-style-type: none
     font-size: 10px
@@ -8,3 +12,18 @@
     margin-right: 7px
     margin-bottom: 7px
     color: #555
+    line-height: 1.2
+    &.white
+        +key(#fff)
+    &.react
+        +key(#61DAFB)
+    &.gatsby
+        +key(#E0D6EB)
+    &.netlify
+        +key(#36B3BB)
+    &.expo
+        +key(#A59AFF)
+    &.css
+        +key(#8096ED)
+    &.graphql
+        +key(#FB8CD7)
