@@ -34,7 +34,7 @@ export default class SearchResults extends Component {
                     key: result.data.id,
                     data:result.data,
                     style: {
-                        scale: 1,
+                        scale: spring(1, presets.gentle)
                     }
                 } 
                 : 
