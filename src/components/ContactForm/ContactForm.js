@@ -52,7 +52,8 @@ export default class ContactForm extends Component {
                 className="contact-form"
                 name="contact"
                 onSubmit={this.handleSubmit}
-                autoComplete="on">
+                autoComplete="on"
+                netlify="true">
                 <div className="contact-form__name">
                     <label htmlFor="name">
                         Your Name: 
