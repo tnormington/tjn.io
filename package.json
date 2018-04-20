@@ -21,6 +21,7 @@
     "gatsby-plugin-typography": "^1.7.18",
     "gatsby-source-filesystem": "^1.5.28",
     "gatsby-transformer-remark": "^1.7.39",
+    "ios-inner-height": "^1.0.3",
     "moment": "^2.22.0",
     "netlify-cms": "^1.4.0",
     "nuka-carousel": "^4.0.3",

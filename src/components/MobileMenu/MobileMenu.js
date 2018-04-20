@@ -4,6 +4,7 @@ import MenuLink from '../MenuLink/MenuLink'
 import Link from 'gatsby-link'
 import Logo from '../Logo/Logo'
 import SocialIcons from '../SocialIcons/SocialIcons'
+import ContactIconBtn from '../ContactIconBtn/ContactIconBtn'
 
 import { links } from '../../models/main_menu'
 
@@ -95,6 +96,7 @@ export default class MobileMenu extends Component {
                     </div>
                     <div className="mobile-menu__top__menu">
                         <SocialIcons />
+                        <ContactIconBtn />
                         <SearchToggle 
                             onClick={this.props.toggleSearch}
                             showSearch={this.props.showSearch}

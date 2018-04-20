@@ -2,6 +2,7 @@ import React from 'react';
 import PageContainer from '../components/PageContainer/PageContainer';
 
 import Link from 'gatsby-link'
+import ContactForm from '../components/ContactForm/ContactForm';
 
 export default () => {
     return (

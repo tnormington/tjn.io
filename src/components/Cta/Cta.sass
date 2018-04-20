@@ -8,12 +8,20 @@
     text-transform: uppercase
     font-size: 14px
     display: inline-block
-    margin-top: 1rem
+    // margin-top: 1rem
     transition: all 0.15s ease-out
+    @media (max-width: 400px)
+        width: 100%
 
+
+.cta
+    &:hover
+        background-color: #fff
+        color: #222
         
 
 
+// Themes
 
 .cta.white
     background-color: #fff
@@ -22,9 +30,6 @@
 .cta.cobalt
     background-color: $cobalt
     color: #fff
-
-
-.cta
     &:hover
-        background-color: #fff
-        color: #222
+        background-color: saturate(lighten($cobalt, 10), 10)
+        color: #fff

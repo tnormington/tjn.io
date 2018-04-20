@@ -6,7 +6,9 @@ import './Header.sass'
 
 import Logo from '../Logo/Logo'
 import MainMenu from '../MainMenu/MainMenu';
+import MobileMenu from '../MobileMenu/MobileMenu';
 import SearchToggle from '../SearchToggle/SearchToggle';
+import ContactIconBtn from '../ContactIconBtn/ContactIconBtn';
 
 
 export default class Header extends Component {
@@ -61,16 +63,21 @@ export default class Header extends Component {
               onClick={this.props.closeSearch}
               addLinkToState={this.addLinkToState}
               path={this.props.path} />
-            <div className="header__search-toggle">
+            <div className="header__util">
+              <ContactIconBtn />
               <SearchToggle 
                 showSearch={this.props.showSearch}
                 onClick={this.props.toggleSearch} />
             </div>
           </div>
         </Container>
+        <MobileMenu
+            toggleSearch={this.props.toggleSearch}
+            closeSearch={this.props.closeSearch}
+            showSearch={this.props.showSearch}
+            path={this.props.path} />
       </div>
     )
   }
 }
 
-// export default Header

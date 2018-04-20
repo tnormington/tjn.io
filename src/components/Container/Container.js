@@ -2,9 +2,9 @@ import React from 'react';
 
 import './Container.sass'
 
-export default ({children}) => {
+export default ({children, className}) => {
     return (
-        <div className="container">
+        <div className={`container ${className}`}>
             { children }
         </div>
     )

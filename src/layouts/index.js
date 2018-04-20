@@ -35,6 +35,16 @@ export default class TemplateWrapper extends Component {
     // Remove scrollbar by setting negative marginRight
     const scrollbarWidth = getScrollbarWidth();
     this.mainContent.style.marginRight = `-${scrollbarWidth}px`;
+    // this.heightPX = window.screen.innerHeight ? window.screen.innerHeight : window.screen.height + 'px';
+
+    this.innerHeight = require('ios-inner-height');
+
+    this.userAgent = window.navigator.userAgent;
+
+
+    // console.log(this.innerHeight())
+    // console.log(window.document.body);
+    window.document.body.style.height = window.screen.innerHeight + 'px';
   }
 
   setHeight(el, h) {
@@ -56,16 +66,32 @@ export default class TemplateWrapper extends Component {
   setHeightVariable() {
     const { header, footer } = this.state.height;
 
-    let slideHeight = `calc(100vh`;
+    let slideHeight = `calc(${this.innerHeight()}px`;
+    // let bodyH = `calc(${this.innerHeight()}px`;
 
     if(header != null)
       slideHeight += ` - ${header}px`;
+      // bodyH += ` - ${header}px`;
     if(footer != null)
       slideHeight += ` - ${footer}px`;
+      // bodyH += ` - ${footer}px`;
+
+    // special fix for iPad & iPhone to account for menu bar
+    // if (this.userAgent.match(/iPad/i) || this.userAgent.match(/iPhone/i)) {
+    //   slideHeight += ` - 110px`;
+    // }
 
     slideHeight += ')';
 
-    document.body.style.setProperty('--slide-height', slideHeight)
+
+
+
+
+    document.body.style.setProperty('--slide-height', slideHeight);
+    document.body.style.setProperty('--footer-height', footer + 'px');
+    document.body.style.setProperty('--header-height', header + 'px');
+
+    // document.body.style.height = slideHeight;
   }
 
   toggleSearch() {
@@ -94,7 +120,7 @@ export default class TemplateWrapper extends Component {
           title="TJN.io"
           meta={[
             { name: 'description', content: 'A personal portfolio website.' },
-            { name: 'keywords', content: 'tim normington, web design, web development' },
+            { name: 'keywords', content: 'tim normington, web design, web development, tjn, tjn.io' },
           ]}>
           <meta name="apple-mobile-web-app-capable" content="yes" />
         </Helmet>

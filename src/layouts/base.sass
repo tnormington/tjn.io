@@ -6,17 +6,20 @@
     box-sizing: border-box
 
 html
-    overflow: hidden
+    // overflow: hidden
 
 body,
 body > div,
 body > div > div 
-    height: 100vh
-    max-height: 100vh
-    overflow: hidden
+    // height: 100vh
+    min-height: 100vh
+    @media (max-width: $mobile_break)
+        min-height: calc(100vh - var(--header-height)
 
 body
     background-color: #eee
+    @media (max-width: $mobile_break)
+        padding-top: var(--header-height)
 
 
 body .main-content 
@@ -25,6 +28,7 @@ body .main-content
     flex-direction: column
     overflow-y: scroll
     scroll-behavior: smooth
+    -webkit-overflow-scrolling: touch
 
 
 
