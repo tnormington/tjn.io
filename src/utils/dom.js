@@ -29,3 +29,12 @@ export function ttr(text) {
 
     return readingTime(text);
 }
+
+export function searchParents(el, tag) {
+    while (el.parentNode) {
+        el = el.parentNode;
+        if (el.tagName === tag)
+            return el;
+    }
+    return null;
+}

@@ -10,16 +10,16 @@ import { links } from '../../models/main_menu'
 
 import './MobileMenu.sass'
 import SearchToggle from '../SearchToggle/SearchToggle';
+import ActiveIndicator from '../ActiveIndicator/ActiveIndicator';
 
 export default class MobileMenu extends Component {
     constructor(props) {
         super(props)
 
-        this.menuLinkRef = this.menuLinkRef.bind(this)
-        this.updateActivePosition = this.updateActivePosition.bind(this)
-        this.moveActiveIndicator = this.moveActiveIndicator.bind(this)
-
-        // this.menuBottom;
+        // this.menuLinkRef = this.menuLinkRef.bind(this)
+        // this.updateActivePosition = this.updateActivePosition.bind(this)
+        // this.moveActiveIndicator = this.moveActiveIndicator.bind(this)
+        // this.disableActiveIndicator = this.disableActiveIndicator.bind(this)
 
         this.state = {
             showActiveIndicator: false,
@@ -32,47 +32,53 @@ export default class MobileMenu extends Component {
         }
     }
 
-    menuLinkRef(el) {
-        if(el !== null && el.classList.contains('active')) {
-            // console.log(el);
-            this.updateActivePosition(el);
-        }
-    }
+    // menuLinkRef(el) {
+    //     if(el !== null && el.classList.contains('active')) {
+    //         // console.log(el);
+    //         this.updateActivePosition(el);
+    //     }
+    // }
 
-    updateActivePosition(el) {
-        console.log(this.menuBottom);
-        // const pX = this.menuBottom.offset().left;
-        // const pY = this.menuBottom.offset().top;
-        const {
-            x, y,
-            width, height
-        } = el.getBoundingClientRect();
-        // const y = el.getBoundingClientRect();
-        console.log(x, y, width, height);
+    // disableActiveIndicator() {
+    //     this.setState({
+    //         showActiveIndicator: false
+    //     });
+    // }
 
-        this.setState({
-            showActiveIndicator: true,
-            activePos: { x, y, width, height }
-        }, this.moveActiveIndicator );
-    }
+    // updateActivePosition(el) {
+    //     const {
+    //         x, y,
+    //         width, height
+    //     } = el.getBoundingClientRect();
+
+    //     this.setState({
+    //         showActiveIndicator: true,
+    //         activePos: { x, y, width, height }
+    //     }, this.moveActiveIndicator );
+    // }
     
-    moveActiveIndicator() {
-        this.activeIndicator.style.left = this.state.activePos.x + 'px';
-        // this.activeIndicator.style.top = this.state.activePos.y + 'px';
-        this.activeIndicator.style.width = this.state.activePos.width + 'px';
-        this.activeIndicator.style.height = this.state.activePos.height + 'px';
-    }
+    // moveActiveIndicator() {
+    //     this.activeIndicator.style.left = this.state.activePos.x + 'px';
+    //     this.activeIndicator.style.width = this.state.activePos.width + 'px';
+    //     this.activeIndicator.style.height = this.state.activePos.height + 'px';
+    // }
 
     render() {
+        // build the menu links
         const menuLinks = links.map( link => (
             <div 
                 key={link.title}
-                onClick={(el) => {
-                    this.props.closeSearch();
-                    this.updateActivePosition(el.target)
-                }}>
+                // onClick={(e) => {
+                //     // only handle the click for links
+                //     if(e.target.nodeName === 'A') {
+                //         this.props.closeSearch();
+                //         this.updateActivePosition(e.target)
+                //     }
+                // }}
+                >
                 <MenuLink
-                    menuLinkRef={this.menuLinkRef}
+                    // menuLinkRef={this.menuLinkRef}
+                    onClick={e => this.props.updateActivePosition(e.target)}
                     title={link.title}
                     to={link.to}
                     path={this.props.path} />
@@ -84,7 +90,8 @@ export default class MobileMenu extends Component {
                 <div className="mobile-menu__top">
                     <div
                         onClick={() => {
-                            this.props.closeSearch()
+                            this.props.updateActivePosition(null);
+                            this.props.closeSearch();
                             this.setState({ showActiveIndicator: false });
                         }}>
                         <Link
@@ -96,7 +103,12 @@ export default class MobileMenu extends Component {
                     </div>
                     <div className="mobile-menu__top__menu">
                         <SocialIcons />
-                        <ContactIconBtn />
+                        <ContactIconBtn
+                            path={ this.props.path }
+                            onClick={() => {
+                                this.props.closeSearch();
+                                this.props.updateActivePosition(null)
+                            }} />
                         <SearchToggle 
                             onClick={this.props.toggleSearch}
                             showSearch={this.props.showSearch}
@@ -104,16 +116,10 @@ export default class MobileMenu extends Component {
                     </div>
                 </div>
                 
-                <div 
-                    ref={ el => {
-                        // console.log('menuBottom ref');
-                        // this.menuBottom = el;
-                    }}
+                <div
                     className="mobile-menu__bottom">
-                    { this.state.showActiveIndicator &&
-                        <div 
-                            ref={ el => this.activeIndicator = el }
-                            className="active-indicator" />
+                    { this.props.activePos &&
+                        <ActiveIndicator activePos={this.props.activePos} />
                     }
                     { menuLinks }
                 </div>

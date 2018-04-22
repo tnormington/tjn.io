@@ -5,7 +5,6 @@ import PageContainer from '../components/PageContainer/PageContainer'
 import BlogList from '../components/BlogList/BlogList';
 
 export default ({ data }) => {
-    console.log(data);
     return (
         <PageContainer>
             <h1>Blog</h1>

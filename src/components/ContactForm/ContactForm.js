@@ -84,6 +84,7 @@ export default class ContactForm extends Component {
                         Message: 
                     </label>
                     <textarea 
+                        rows="5"
                         placeholder="Message"
                         id="message"
                         onChange={this.handleChange}

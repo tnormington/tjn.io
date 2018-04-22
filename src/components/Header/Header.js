@@ -9,16 +9,27 @@ import MainMenu from '../MainMenu/MainMenu';
 import MobileMenu from '../MobileMenu/MobileMenu';
 import SearchToggle from '../SearchToggle/SearchToggle';
 import ContactIconBtn from '../ContactIconBtn/ContactIconBtn';
+import { ETIME } from 'constants';
+
+import {
+  searchParents
+} from '../../utils/dom'
 
 
 export default class Header extends Component {
   constructor(props) {
     super(props);
 
-    this.addLinkToState = this.addLinkToState.bind(this);
+    this.updateActivePosition = this.updateActivePosition.bind(this);
 
     this.state = {
-      links: []
+      showActiveIndicator: false,
+      activePos: {
+          x: 0,
+          y: 0,
+          width: 0,
+          height: 0,
+      } 
     };
   }
 
@@ -33,38 +44,77 @@ export default class Header extends Component {
     window.removeEventListener('resize', this.resizeListener );
   }
 
-  addLinkToState(link) {
-    this.setState( prevState => {
-      prevState.links.push(link);
-      return prevState;
-    });
+  updateActivePosition(el) {
+    if(el === null) {
+      this.setState({
+        activePos: false,
+      })
+
+      return;
+    }
+
+    const {
+        x, y,
+        width, height
+    } = el.getBoundingClientRect();
+
+    this.setState({
+        showActiveIndicator: true,
+        activePos: { x, y, width, height }
+    }, this.moveActiveIndicator );
   }
+
+  // addLinkToState(link) {
+  //   this.setState( prevState => {
+  //     prevState.links.push(link);
+  //     return prevState;
+  //   });
+  // }
 
   render() {
     const isHome = this.props.path == '/';
   
     return (
-      <div className="topbar__wrapper" ref={(el) => {
-        if(el != null && this.props.height === null && el.clientHeight > 0)
-          this.props.setHeight('header', el.clientHeight);
+      <div
+        // onClick={e => {
+        //   // console.log(e.target.nodeName === 'A' || searchParents(e.target, 'A') !== null)
+        //   if(e.target.nodeName === 'A' || searchParents(e.target, 'A') !== null)
+        //     console.log(e.target.href)
+        //     if(e.target.href === undefined || e.target.href.endsWith('contact')) {
+        //       this.updateActivePosition(null);
+        //     } else {
+        //       this.updateActivePosition(e.target);
+        //     }
+        // }}
+        className="topbar__wrapper"
+        ref={(el) => {
+          if(el != null && this.props.height === null && el.clientHeight > 0)
+            this.props.setHeight('header', el.clientHeight);
         }}>
         <Container>
           <div className="topbar">
             <div
-              onClick={this.props.closeSearch}
+              onClick={() => {
+                this.updateActivePosition(null);
+                this.props.closeSearch();
+              }}
               className="topbar__logo">
               <Link 
-                innerRef={(el) => this.addLinkToState(el) }
                 to="/">
                 <Logo classNames={isHome ? 'active--yellow' : ''} />
               </Link>
             </div>
             <MainMenu
               onClick={this.props.closeSearch}
-              addLinkToState={this.addLinkToState}
+              // addLinkToState={this.addLinkToState}
               path={this.props.path} />
             <div className="header__util">
-              <ContactIconBtn />
+              <ContactIconBtn
+                onClick={() => {
+                  this.props.closeSearch();
+                  this.updateActivePosition(null)
+                }}
+               />
               <SearchToggle 
                 showSearch={this.props.showSearch}
                 onClick={this.props.toggleSearch} />
@@ -75,6 +125,8 @@ export default class Header extends Component {
             toggleSearch={this.props.toggleSearch}
             closeSearch={this.props.closeSearch}
             showSearch={this.props.showSearch}
+            activePos={this.state.activePos}
+            updateActivePosition={this.updateActivePosition}
             path={this.props.path} />
       </div>
     )
